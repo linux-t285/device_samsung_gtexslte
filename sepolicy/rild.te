@@ -1,0 +1,37 @@
+allow rild media_rw_data_file:dir { open read search };
+allow rild mnt_user_file:dir search;
+allow rild mnt_user_file:lnk_file read;
+allow rild storage_file:dir search;
+allow rild storage_file:lnk_file read;
+
+allow rild proc_net:file write;
+allow rild system_data_file:dir { create write add_name remove_name};
+allow rild ctl_default_prop:property_service set;
+allow rild ctl_rildaemon_prop:property_service set;
+allow rild prod_file:dir search;
+allow rild spipe_device:chr_file { open read write ioctl };
+allow rild app_efs_file:dir { search };
+allow rild app_efs_file:file { open read write ioctl getattr };
+allow rild mediaserver:dir search;
+allow rild mediaserver:file { open read write ioctl getattr };
+allow rild imei_efs_file:dir search;
+allow rild imei_efs_file:file { open read getattr };
+allow rild at_distributor:dir search;
+allow rild at_distributor:file { open read getattr };
+allow rild rild_prop:file { getattr open read};
+allow rild self:capability dac_read_search;
+allow rild rild_prop:property_service set;
+
+allow rild radio_data_file:lnk_file read;
+
+allow rild system_server:dir search;
+allow rild system_server:file { read getattr open };
+
+type_transition rild system_data_file:file radio_data_file;
+allow rild radio_data_file:file create_file_perms;
+
+allow rild logd:unix_stream_socket connectto;
+allow rild logdr_socket:sock_file write;
+
+allow rild dumplog_data_file:dir { open read };
+allow rild dumplog_data_file:file { append getattr open read setattr };

@@ -1,0 +1,3 @@
+userdebug(`
+    allow sysinit kernel:system module_request;
+')

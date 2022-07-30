@@ -1,0 +1,3 @@
+allow system_server clock_device:chr_file { open read write ioctl };
+allow system_server zygote:binder { call transfer };
+allow system_server zygote:process getsched;
