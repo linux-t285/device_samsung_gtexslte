@@ -110,7 +110,8 @@ BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charg
 
 # Integrated kernel building configs
 # BOARD_KERNEL_CMDLINE will be ignored when CONFIG_CMDLINE_FROM_BOOTLOADER=y in defconfig
-BOARD_KERNEL_CMDLINE := console=tty0
+BOARD_KERNEL_CMDLINE := root=/dev/ram0 rw initrd=0x80e00000,0x1f243f init=/sbin/init mem=128M usb_debug console=tty0
+# root=/dev/ram0 rw initrd=0x80e00000,0x1f243f init=/init mem=128M usb_debug console=tty0
 # BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
